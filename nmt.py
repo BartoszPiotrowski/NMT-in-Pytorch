@@ -111,8 +111,7 @@ def train(pairs, encoder, decoder, input_lang, output_lang,
                          criterion, input_lang.SOS_token, input_lang.EOS_token)
             losses.append(loss)
 
-        print("Loss: {}\n".format(sum(losses) / len(losses)))
-        print("Loss: {}\n".format(sum(losses) / len(losses)))
+        print("Epoch: {}. Loss: {}.\n".format(i, sum(losses) / len(losses)))
         evaluateRandomly(pairs, encoder, decoder, input_lang, output_lang)
 
 
@@ -140,5 +139,5 @@ hidden_dim = 256
 encoder1 = Encoder(input_lang.n_words, hidden_dim)
 decoder1 = Decoder(hidden_dim, output_lang.n_words,
                    output_lang.SOS_token, output_lang.EOS_token)
-train(pairs, encoder1, decoder1, input_lang, output_lang, epochs=1)
+train(pairs, encoder1, decoder1, input_lang, output_lang, epochs=1000)
 evaluateRandomly(pairs, encoder1, decoder1, input_lang, output_lang)
